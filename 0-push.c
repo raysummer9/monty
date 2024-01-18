@@ -35,7 +35,7 @@ void custom_push(stack_t **stack, unsigned int line_number)
 
 	else
 	{
-		fprintf(stderr, "L%d: usahe: push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		fclose(bus.file);
 		free(bus.content);
 		exit(EXIT_FAILURE);
