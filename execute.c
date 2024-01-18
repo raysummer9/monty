@@ -10,7 +10,7 @@
  * Return: 0 if successful, otherwise exits with EXIT_FAILURE
  */
 
-int execute(char *lineContent, stack_t **stack, unsigned int lineNumber, FILE *filePointer)
+int execute(char *content, stack_t **stack, unsigned int line_number, FILE *file)
 {
 	unsigned int i = 0;
 	char *opcode;
@@ -20,7 +20,7 @@ int execute(char *lineContent, stack_t **stack, unsigned int lineNumber, FILE *f
 		{NULL, NULL}
 	};
 
-	opcode = strtok(lineContent, "\n\t");
+	opcode = strtok(content, "\n\t");
 	if (opcode && opcode[0] == '#')
 		return (0);
 	bus.argument = strtok(NULL, "\n\t");
@@ -29,7 +29,7 @@ int execute(char *lineContent, stack_t **stack, unsigned int lineNumber, FILE *f
 	{
 		if (strcmp(opcode, opcodes[i]. opcode) == 0)
 		{
-			opcodes[i].f(stack, lineNumber);
+			opcodes[i].f(stack, line_number);
 			return (0);
 		}
 		i++;
@@ -37,9 +37,9 @@ int execute(char *lineContent, stack_t **stack, unsigned int lineNumber, FILE *f
 
 	if (opcode && opcodes[i].opcode == NULL)
 	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", lineNumber, opcode);
-		fclose(filePointer);
-		free(lineContent);
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+		fclose(file);
+		free(content);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}

@@ -7,10 +7,10 @@
  *
  * Description: This function prints the elements in the stack or queue.
  */
-void custom_pall(stack_t **stack, unsigned int lineNumber)
+void custom_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
-	(void)lineNumber;
+	(void)line_number;
 
 	if (current == NULL)
 		return;

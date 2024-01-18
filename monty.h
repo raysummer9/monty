@@ -62,7 +62,7 @@ typedef struct instruction_s
 } instruction_t;
 
 void custom_push(stack_t **stack, unsigned int line_number);
-void custom_pall(stack_t **stack, unsigned int lineNumber);
+void custom_pall(stack_t **stack, unsigned int line_number);
 void custom_pint(stack_t **stack, unsigned int lineNumber);
 void custom_pop(stack_t **stack, unsigned int lineNumber);
 void custom_swap(stack_t **stack, unsigned int lineNumber);
@@ -72,7 +72,7 @@ void addnode(stack_t **stack, int value);
 void queue_node(stack_t **stack, int value);
 void f_queue(stack_t **stack, unsigned int lineNumber);
 void custom_nop(stack_t **stack, unsigned int lineNumber);
-int execute(char *lineContent, stack_t **stack, unsigned int lineNumber, FILE *filePointer);
+int execute(char *content, stack_t **stack, unsigned int line_number, FILE *file);
 
 #endif
 
