@@ -13,8 +13,8 @@ bus_t bus = {NULL, NULL, NULL, 0};
  */
 int main(int argc, char *argv[])
 {
-    char *lineContent;
-    FILE *filePointer;
+    char *content;
+    FILE *file;
     size_t size = 0;
     ssize_t readLine = 1;
     stack_t *stack = NULL;
@@ -26,10 +26,10 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    filePointer = fopen(argv[1], "r");
-    bus.filePointer = filePointer;
+    file = fopen(argv[1], "r");
+    bus.file = file;
 
-    if (!filePointer)
+    if (!file)
     {
         fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
         exit(EXIT_FAILURE);
@@ -37,21 +37,21 @@ int main(int argc, char *argv[])
 
     while (readLine > 0)
     {
-        lineContent = NULL;
-        readLine = getline(&lineContent, &size, filePointer);
-        bus.lineContent = lineContent;
+        content = NULL;
+        readLine = getline(&content, &size, file);
+        bus.content = content;
         lineCounter++;
 
         if (readLine > 0)
         {
-            execute(lineContent, &stack, lineCounter, filePointer);
+            execute(content, &stack, lineCounter, file);
         }
 
-        free(lineContent);
+        free(content);
     }
 
     free_stack(stack);
-    fclose(filePointer);
+    fclose(file);
     return 0;
 }
 

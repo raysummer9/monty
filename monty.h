@@ -39,8 +39,8 @@ typedef struct stack_s
 typedef struct bus_s
 {
 	char *argument;
-	FILE *filePointer;
-	char *lineContent;
+	FILE *file;
+	char *content;
 	int isStack;
 } bus_t;
 
@@ -61,7 +61,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void custom_push(stack_t **stack, unsigned int lineNumber);
+void custom_push(stack_t **stack, unsigned int line_number);
 void custom_pall(stack_t **stack, unsigned int lineNumber);
 void custom_pint(stack_t **stack, unsigned int lineNumber);
 void custom_pop(stack_t **stack, unsigned int lineNumber);
