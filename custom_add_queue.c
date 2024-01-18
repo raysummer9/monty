@@ -3,14 +3,14 @@
 /**
  * f_queue - Switch the stack to queue mode
  * @stack: Pointer to the stack
- * @lineNumber: Line number in the file
+ * @line_number: Line number in the file
  *
  * Description: This function switches the stack to queue mode.
  */
-void f_queue(stack_t **stack, unsigned int lineNumber)
+void f_queue(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
-	(void)lineNumber;
+	(void)line_number;
 	bus.isStack = 1;
 }
 

@@ -2,10 +2,10 @@
 
 /**
  * execute - Execute Monty opcodes
- * @lineContent: Line content from the Monty file
+ * @content: Line content from the Monty file
  * @stack: Pointer to the stack or queue head
- * @lineNumber: Line number in the file
- * @filePointer: Pointer to the Monty file
+ * @line_number: Line number in the file
+ * @file: Pointer to the Monty file
  *
  * Return: 0 if successful, otherwise exits with EXIT_FAILURE
  */
@@ -17,6 +17,7 @@ int execute(char *content, stack_t **stack, unsigned int line_number, FILE *file
 
 	instruction_t opcodes[] = {
 		{"push", custom_push}, {"pall", custom_pall},
+		{"pint", custom_pint},
 		{NULL, NULL}
 	};
 

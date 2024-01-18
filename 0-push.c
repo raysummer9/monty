@@ -3,7 +3,7 @@
 /**
  * custom_push - add node to the stack or queue
  * @stack: pointer to the stack or queue head
- * @lineNumber: line number in the file
+ * @line_number: line number in the file
  *
  * Description: This function adds a node to the stack or queue based on the
  * global variable bus.lifi (stack or queue flag)

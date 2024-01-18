@@ -63,7 +63,7 @@ typedef struct instruction_s
 
 void custom_push(stack_t **stack, unsigned int line_number);
 void custom_pall(stack_t **stack, unsigned int line_number);
-void custom_pint(stack_t **stack, unsigned int lineNumber);
+void custom_pint(stack_t **stack, unsigned int line_number);
 void custom_pop(stack_t **stack, unsigned int lineNumber);
 void custom_swap(stack_t **stack, unsigned int lineNumber);
 void free_stack(stack_t *stack);
@@ -75,4 +75,3 @@ void custom_nop(stack_t **stack, unsigned int lineNumber);
 int execute(char *content, stack_t **stack, unsigned int line_number, FILE *file);
 
 #endif
-
