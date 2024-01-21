@@ -2,40 +2,40 @@
 
 /**
  * f_queue - Switch the stack to queue mode
- * @stack: Pointer to the stack
+ * @head: Pointer to the stack
  * @line_number: Line number in the file
  *
  * Description: This function switches the stack to queue mode.
  */
-void f_queue(stack_t **stack, unsigned int line_number)
+void custom_queue(stack_t **head, unsigned int line_number)
 {
-	(void)stack;
+	(void)head;
 	(void)line_number;
 	bus.isStack = 1;
 }
 
 /**
- * queue_node - Add a new node to the tail of the stack
- * @stack: Pointer to the head of the stack
+ * add_queue - Add a new node to the tail of the stack
+ * @head: Pointer to the head of the stack
  * @value: Value to be stored in the new node
  *
  * Description: This function adds a new node to the tail of the stack.
  */
-void queue_node(stack_t **stack, int value)
+void add_queue(stack_t **head, int value)
 {
-	stack_t *newNode, *current;
+	stack_t *new_node, *current;
 
-	current = *stack;
-	newNode = malloc(sizeof(stack_t));
+	current = *head;
+	new_node = malloc(sizeof(stack_t));
 
-	if (newNode == NULL)
+	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: unable to allocate memory\n");
 		exit(EXIT_FAILURE);
 	}
 
-	newNode->n = value;
-	newNode->next = NULL;
+	new_node->n = value;
+	new_node->next = NULL;
 
 	if (current)
 	{
@@ -45,12 +45,12 @@ void queue_node(stack_t **stack, int value)
 
 	if (!current)
 	{
-		*stack = newNode;
-		newNode->prev = NULL;
+		*head = new_node;
+		new_node->prev = NULL;
 	}
 	else
 	{
-		current->next = newNode;
-		newNode->prev = current;
+		current->next = new_node;
+		new_node->prev = current;
 	}
 }

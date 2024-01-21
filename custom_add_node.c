@@ -10,28 +10,28 @@
  *              of the existing head node to point to the new node.
  */
 
-void addnode(stack_t **stack, int value)
+void add_node(stack_t **stack, int value)
 {
-	stack_t *newNode = malloc(sizeof(stack_t));
+	stack_t *new_node = malloc(sizeof(stack_t));
 
-	if (newNode == NULL)
+	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: Unable to allocate memory\n");
 		exit(EXIT_FAILURE);
 	}
 
-	newNode->n = value;
-	newNode->prev = NULL;
+	new_node->n = value;
+	new_node->prev = NULL;
 
 	if (*stack != NULL)
 	{
-		newNode->next = *stack;
-		(*stack)->prev = newNode;
+		new_node->next = *stack;
+		(*stack)->prev = new_node;
 	}
 	else
 	{
-		newNode->next = NULL;
+		new_node->next = NULL;
 	}
 
-	*stack = newNode;
+	*stack = new_node;
 }

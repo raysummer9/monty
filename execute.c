@@ -17,8 +17,6 @@ int execute(char *content, stack_t **stack, unsigned int line_number, FILE *file
 
 	instruction_t opcodes[] = {
 		{"push", custom_push}, {"pall", custom_pall},
-		{"pint", custom_pint}, {"sub", custom_sub},
-		{"pop", custom_pop},
 		{NULL, NULL}
 	};
 

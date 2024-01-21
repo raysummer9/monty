@@ -27,23 +27,20 @@ typedef struct stack_s
 } stack_t;
 
 /**
- * struct Bus - Variables structure carrying values through the program
- * @argument: Value associated with an instruction
- * @filePointer: Pointer to the current file
- * @lineContent: Content of the current line in the file
- * @isStack: Flag indicating whether to use stack (1) or queue (0)
- *
- * Description: Structure carrying values through the program execution
+ * struct bus_s - global bus structure
+ * @file: pointer to the currently open file
+ * @content: content of the current line being processed
+ * @argument: argument for the current opcode
+ * @isStack: flag indicating whether the data structure is stack or queue
  */
 
 typedef struct bus_s
 {
-	char *argument;
 	FILE *file;
 	char *content;
+ 	char *argument;
 	int isStack;
 } bus_t;
-
 extern bus_t bus;
 
 /**
@@ -61,18 +58,13 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void custom_push(stack_t **stack, unsigned int line_number);
-void custom_pall(stack_t **stack, unsigned int line_number);
-void custom_pint(stack_t **stack, unsigned int line_number);
-void custom_sub(stack_t **stack, unsigned int line_number);
-void custom_pop(stack_t **stack, unsigned int line_number);
-void custom_swap(stack_t **stack, unsigned int lineNumber);
-void free_stack(stack_t *stack);
+void custom_push(stack_t **head, unsigned int line_number);
+void custom_pall(stack_t **head, unsigned int line_number);
+void free_stack(stack_t *head);
 int main(int argc, char *argv[]);
-void addnode(stack_t **stack, int value);
-void queue_node(stack_t **stack, int value);
-void f_queue(stack_t **stack, unsigned int lineNumber);
-void custom_nop(stack_t **stack, unsigned int lineNumber);
+void add_node(stack_t **head, int value);
+void custom_queue(stack_t **head, unsigned int line_number);
+void add_queue(stack_t **head, int value);
 int execute(char *content, stack_t **stack, unsigned int line_number, FILE *file);
 
 #endif

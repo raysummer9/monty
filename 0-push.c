@@ -2,49 +2,46 @@
 
 /**
  * custom_push - add node to the stack or queue
- * @stack: pointer to the stack or queue head
+ * @head: pointer to the stack or queue head
  * @line_number: line number in the file
  *
  * Description: This function adds a node to the stack or queue based on the
  * global variable bus.lifi (stack or queue flag)
  */
 
-void custom_push(stack_t **stack, unsigned int line_number)
+void custom_push(stack_t **head, unsigned int line_number)
 {
-	int value, j = 0, flag = 0;
-	printf("Debug: Processing line %d: %s", line_number, bus.content);
+	int n, j = 0, flag = 0;
 
-	if (!bus.argument)
+	if (bus.argument)
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		fclose(bus.file);
-		free(bus.content);
-		exit(EXIT_FAILURE);
-	}
-
-	if (bus.argument[0] == '-')
-		j++;
-	for (; bus.argument[j] != '\0'; j++)
-	{
-		if (bus.argument[j] < '0' || bus.argument[j] > '9')
+		if (bus.argument[0] == '-')
+			j++;
+		for (; bus.argument[j] != '\0'; j++)
 		{
-			flag = 1;
-			break;
+			if (bus.argument[j] > 57 || bus.argument[j] < 48)
+				flag = 1;
+		}
+		if (flag == 1)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			fclose(bus.file);
+			free(bus.content);
+			free_stack(*head);
+			exit(EXIT_FAILURE);
 		}
 	}
-
-	if (flag)
+	else
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		fclose(bus.file);
 		free(bus.content);
+		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-
-	value = atoi(bus.argument);
+	n = atoi(bus.argument);
 	if (bus.isStack == 0)
-		addnode(stack, value);
+		add_node(head, n);
 	else
-		queue_node(stack, value);
-
+		add_queue(head, n);
 }
