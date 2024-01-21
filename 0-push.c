@@ -12,6 +12,7 @@
 void custom_push(stack_t **stack, unsigned int line_number)
 {
 	int value, j = 0, flag = 0;
+	printf("Debug: Processing line %d: %s", line_number, bus.content);
 
 	if (!bus.argument)
 	{

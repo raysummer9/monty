@@ -29,7 +29,7 @@ int execute(char *content, stack_t **stack, unsigned int line_number, FILE *file
 
 	while (opcodes[i].opcode && opcode)
 	{
-		if (strcmp(opcode, opcodes[i]. opcode) == 0)
+		if (strcmp(opcode, opcodes[i].opcode) == 0)
 		{
 			opcodes[i].f(stack, line_number);
 			return (0);
